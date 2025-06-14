@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id:  msvc-k8-courses
+          uri: lb://msvc-k8-courses
+          predicates:
+            - Path=/api/courses/**
+          filters:
+            - StripPrefix=2
+        - id:  msvc-k8-users
+          uri: lb://msvc-k8-users
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=2            
